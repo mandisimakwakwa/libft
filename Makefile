@@ -8,7 +8,8 @@ INCLUDES = "includes"
 
 OBJ = ft_putchar.o \
       ft_putstr.o \
-	  ft_putendl.o
+	  ft_putendl.o \
+	  ft_putnbr.o
 
 all: $(NAME)
 
