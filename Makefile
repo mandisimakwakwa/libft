@@ -7,7 +7,8 @@ FLAGS = -Wall -Werror -Wextra
 INCLUDES = "includes"
 
 OBJ = ft_putchar.o \
-      ft_putstr.o
+      ft_putstr.o \
+	  ft_putendl.o
 
 all: $(NAME)
 

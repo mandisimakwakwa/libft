@@ -7,4 +7,5 @@
 
 void		ft_putchar(char c);
 void		ft_putstr(char *string);
+void		ft_putendl(char *string);
 #endif
