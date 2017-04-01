@@ -5,10 +5,9 @@ void	ft_putstr(char *string)
 	int	i;
 
 	i = 0;
-	while (string)
+	while (string[i])
 	{
 		ft_putchar(string[i]);
 		i++;
 	}
-	string[i] = '\0';
 }
