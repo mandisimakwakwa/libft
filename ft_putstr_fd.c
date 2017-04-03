@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/22 12:56:29 by mmakwakw          #+#    #+#             */
-/*   Updated: 2016/08/10 17:29:36 by mmakwakw         ###   ########.fr       */
+/*   Created: 2016/08/15 14:19:23 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/08/15 14:29:32 by mmakwakw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	if (n < 0)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		ft_putchar('-');
-		ft_putnbr(-n);
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		ft_putchar(n + '0');
 }

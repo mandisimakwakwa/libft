@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/22 12:56:29 by mmakwakw          #+#    #+#             */
-/*   Updated: 2016/08/10 17:29:36 by mmakwakw         ###   ########.fr       */
+/*   Created: 2016/08/08 11:26:50 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/08/08 12:02:34 by mmakwakw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	if (n < 0)
+	size_t		i;
+	size_t		i_2;
+	char		*my_s1;
+
+	i = 0;
+	i_2 = ft_strlen(s1);
+	my_s1 = s1;
+	if (s2 == NULL)
 	{
-		ft_putchar('-');
-		ft_putnbr(-n);
+		my_s1[i_2 - 1] = '\0';
+		return (my_s1);
 	}
-	else if (n > 9)
+	while (s2[i] != '\0' && i < n)
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		my_s1[i_2 + i] = (char)s2[i];
+		i++;
 	}
-	else
-		ft_putchar(n + '0');
+	my_s1[i_2 + i] = '\0';
+	return (my_s1);
 }

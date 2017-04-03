@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/22 12:56:29 by mmakwakw          #+#    #+#             */
-/*   Updated: 2016/08/10 17:29:36 by mmakwakw         ###   ########.fr       */
+/*   Created: 2016/08/08 09:52:49 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/08/08 10:25:23 by mmakwakw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	if (n < 0)
+	size_t	i;
+
+	i = 0;
+	while (i < len && src[i] != '\0')
 	{
-		ft_putchar('-');
-		ft_putnbr(-n);
+		dst[i] = (char)src[i];
+		i++;
 	}
-	else if (n > 9)
+	while (i < len)
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		dst[i] = '\0';
+		i++;
 	}
-	else
-		ft_putchar(n + '0');
+	return (dst);
 }

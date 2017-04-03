@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/22 12:56:29 by mmakwakw          #+#    #+#             */
-/*   Updated: 2016/08/10 17:29:36 by mmakwakw         ###   ########.fr       */
+/*   Created: 2016/08/08 11:42:58 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/08/08 12:31:22 by mmakwakw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	if (n < 0)
+	size_t		i;
+	size_t		delim;
+	size_t		res;
+
+	i = 0;
+	while (dst[i] != '\0' && i < size)
+		i++;
+	delim = i;
+	while (src[i - delim] && i < (size - 1))
 	{
-		ft_putchar('-');
-		ft_putnbr(-n);
+		dst[i] = src[i - delim];
+		i++;
 	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		ft_putchar(n + '0');
+	if (delim < size)
+		dst[i] = '\0';
+	res = delim + ft_strlen(src);
+	return (res);
 }

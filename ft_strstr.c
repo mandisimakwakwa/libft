@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/22 12:56:29 by mmakwakw          #+#    #+#             */
-/*   Updated: 2016/08/10 17:29:36 by mmakwakw         ###   ########.fr       */
+/*   Created: 2016/08/08 15:04:22 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/08/08 15:56:05 by mmakwakw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+char	*ft_strstr(const char *big, const char *little)
 {
-	if (n < 0)
+	size_t	i;
+	size_t	track;
+	size_t	len;
+
+	i = 0;
+	track = 0;
+	len = ft_strlen(little);
+	if (len == 0)
+		return (char *)big;
+	while (big[i])
 	{
-		ft_putchar('-');
-		ft_putnbr(-n);
+		while (little[track] == big[i + track])
+		{
+			if (track == (len - 1))
+				return ((char *)big + i);
+			track++;
+		}
+		track = 0;
+		i++;
 	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		ft_putchar(n + '0');
+	return (NULL);
 }

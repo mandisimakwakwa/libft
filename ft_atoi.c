@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/22 12:56:29 by mmakwakw          #+#    #+#             */
-/*   Updated: 2016/08/10 17:29:36 by mmakwakw         ###   ########.fr       */
+/*   Created: 2016/08/09 08:13:11 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/11/18 11:05:11 by mmakwakw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+int		ft_atoi(const char *s)
 {
-	if (n < 0)
+	int		i;
+	int		conv;
+	int		res;
+	int		neg_chk;
+
+	i = 0;
+	conv = 0;
+	neg_chk = 1;
+	if (s == NULL)
+		return (0);
+	if (s[i] == '-')
 	{
-		ft_putchar('-');
-		ft_putnbr(-n);
+		neg_chk = -1;
+		i++;
 	}
-	else if (n > 9)
+	else if (s[i] == '+')
+		i++;
+	while (ft_isesc(s[i]))
+		i++;
+	while (s[i] >= 48 && s[i] <= 57)
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		conv = conv * 10 + s[i++] - 48;
 	}
-	else
-		ft_putchar(n + '0');
+	res = conv * neg_chk;
+	return (res);
 }

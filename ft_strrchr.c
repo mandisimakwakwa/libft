@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/22 12:56:29 by mmakwakw          #+#    #+#             */
-/*   Updated: 2016/08/10 17:29:36 by mmakwakw         ###   ########.fr       */
+/*   Created: 2016/08/08 14:11:01 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/11/18 10:59:33 by mmakwakw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	ft_putnbr(int n)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (n < 0)
+	char	*tmp;
+	int		i;
+	int		track;
+
+	tmp = (char *)malloc(sizeof(char) * ft_strlen(s));
+	i = 0;
+	track = 0;
+	if ((char)s[i] == '\0')
+		return (NULL);
+	while (s[i] != '\0' && s[i] != c)
+		i++;
+	if (s[i] != '\0')
+		i = i - 1;
+	while (s[i] != '\0')
 	{
-		ft_putchar('-');
-		ft_putnbr(-n);
+		tmp[track] = (char)s[i];
+		i++;
+		track++;
 	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		ft_putchar(n + '0');
+	tmp[track] = '\0';
+	return (tmp);
 }

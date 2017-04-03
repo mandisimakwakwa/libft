@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/07/14 16:19:55 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/07/14 16:23:17 by mmakwakw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_putstr(char *string)
+void	ft_putstr(const char *s)
 {
 	int	i;
 
 	i = 0;
-	while (string[i])
+	while (s[i])
 	{
-		ft_putchar(string[i]);
+		ft_putchar(s[i]);
 		i++;
 	}
 }

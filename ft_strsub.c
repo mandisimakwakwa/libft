@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakwakw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/22 12:56:29 by mmakwakw          #+#    #+#             */
-/*   Updated: 2016/08/10 17:29:36 by mmakwakw         ###   ########.fr       */
+/*   Created: 2016/08/15 11:40:23 by mmakwakw          #+#    #+#             */
+/*   Updated: 2016/11/18 11:09:02 by mmakwakw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	if (n < 0)
+	size_t	i;
+	char	*tmp;
+
+	i = 0;
+	tmp = ft_memalloc(len + 1);
+	if (tmp == NULL)
+		return (NULL);
+	while (i < len)
 	{
-		ft_putchar('-');
-		ft_putnbr(-n);
+		tmp[i] = s[start + i];
+		i++;
 	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		ft_putchar(n + '0');
+	tmp[i] = '\0';
+	return (tmp);
 }
